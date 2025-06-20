@@ -1,7 +1,6 @@
 .venv/
 backup/
-G7_main_page.json
 __pycache__/
-
-
-
+/G7_main_page.json
+/tweets_final.json
+/tweets.json

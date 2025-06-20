@@ -35,8 +35,10 @@ def merge_tweet_json(path_first:str, path_second:str, path_final:str) -> bool:
     second_data = get_json_data(path_second)
 
     for k, v in second_data.items():
+        if k not in first_data: first_data[k] = {}
         for k_v, v_v in v.items():
             if isinstance(v_v, dict):
+                first_data[k][k_v] = {}
                 for k_k_v, v_v_V in v_v.items():
                     first_data[k][k_v][k_k_v] = v_v_V
             else:

@@ -72,9 +72,10 @@ def get_tweet_info(tweet:WebElement) -> dict | None:
     try:
         time_stamp = tweet.find_element(By.CSS_SELECTOR, 'time').get_attribute('datetime')
         url_tweet = tweet.find_element(By.CSS_SELECTOR,
-            'div[class="css-146c3p1 r-bcqeeo r-1ttztb7 r-qvutc0 r-37j5jr r-a023e6 r-rjixqe r-16dba41"] a[style="color: rgb(113, 118, 123);"').get_attribute("href")
-        if url_tweet.endswith("/history"):
-            url_tweet = url_tweet.replace("/history","")
+            'a[style="color: rgb(113, 118, 123);"]').get_attribute("href")
+        #Little fix if it take other url "media_tags" or "history"
+        if url_tweet.endswith("/media_tags") : url_tweet.replace("/media_tags", "")
+        if url_tweet.endswith("/history") : url_tweet = url_tweet.replace("/history","")
         if url_tweet not in tweet_dict:
             tweet_dict[url_tweet] = {}
         tweet_dict[url_tweet]['time_stamp'] = time_stamp
