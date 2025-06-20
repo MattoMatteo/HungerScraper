@@ -30,7 +30,10 @@ def update_scraped_tweets(starting_index:int):
 
 def main():
     init_coockies(3)
-    update_scraped_tweets(1)
+
+    #Remove comments below if you wanna recalcolate hashtags (first_generation for direct offial webpage G7
+    #and second generation for inner search of first_generation hashtags)
+
     #Get Hashtags first generation
     #scrape_main_page_G7(file_name="G7_main_page.json", url='https://x.com/G7', max_tweet=800)
     #create_relevant_hashtags_file_from_tweets(tweets_path="G7_main_page.json", output_path="hashtags_first_generation.json")
@@ -41,6 +44,7 @@ def main():
     #scrape_hastags_pages_loop(n_tweets_for_page=100)
     #create_relevant_hashtags_file_from_tweets(tweets_path="tweets.json", output_path="hashtags.json")
 
+    #That will scrape over "second generation hashtags" in the file "hashtags.json"
     while(True):
         scrape_hastags_pages_loop(n_tweets_for_page=100)
 
